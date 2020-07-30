@@ -60,14 +60,12 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             case 0:
                 //upgrade attack speed
-                Debug.Log("attack speed");
                 _hud.DisplayMessage("Attack speed bonus");
                 _weaponController.delayBetweenShots *= 0.6f;
                 _weaponController.bulletSpreadAngle *= 1.4f;
                 break;
             case 1:
                 //upgrade alt fire
-                Debug.Log("alt fire");
                 _hud.DisplayMessage("Secondary fire bonus: right click to fire secondary weapon");
                 
                 if(_weaponController.bulletsPerAltShot == 0)
@@ -81,7 +79,6 @@ public class PlayerUpgradeManager : MonoBehaviour
                 break;
             case 2:
                 //upgrade chance to spawn missile when after an enemy
-                Debug.Log("random missiles");
                 _hud.DisplayMessage("Missile bonus: chance to shoot a missile after hitting an enemy");
                 _weaponController.chanceToSpawnMissile += 0.15f;
                 break;
@@ -95,22 +92,18 @@ public class PlayerUpgradeManager : MonoBehaviour
         switch(rand)
         {
             case 0: //upgrade movement speed
-                Debug.Log("movement speed");
                 _hud.DisplayMessage("Movement speed bonus");
                 _playerCharacterController.maxSpeedOnGround *= 1.15f;
                 break;
             case 1: //upgrade bunny hop speed modifier
-                Debug.Log("bunny hop speed modifier");
                 _hud.DisplayMessage("Bunny hop bonus: jump repeatedly to gain a speed boost");
                 _playerCharacterController.maxJumpSpeedBoost += 0.2f;
                 break;
             case 2: //upgrade non shooting speed
-                Debug.Log("non shooting speed");
                 _hud.DisplayMessage("Walking bonus: gain a speed boost when you are not shooting");
                 nonShootingSpeedModifier *= 1.17f;
                 break;
             case 3: //upgrade air acceleration
-                Debug.Log("air acceleration");
                 _hud.DisplayMessage("Air acceleration bonus: more control while jumping");
                 _playerCharacterController.accelerationSpeedInAir += 15f;
                 break;

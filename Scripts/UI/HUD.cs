@@ -17,6 +17,12 @@ public class HUD : MonoBehaviour
     {
         _playerUpgradeManager = GameObject.Find("Player").GetComponent<PlayerUpgradeManager>();  
         textActivatedTime = 0f;
+
+        numPickupsText.text = "    x 0";
+        upgradeText.text = "";
+
+        Debug.Log(numPickupsText.text);
+        upgradeText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
