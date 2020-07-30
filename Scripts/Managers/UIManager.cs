@@ -8,10 +8,13 @@ public class UIManager : Singleton<UIManager>
     public Events.EventFadeComplete OnMainMenuFadeComplete;
     public Events.EventFadeComplete OnGameOverMenuFadeComplete;
 
+    public SettingsMenu settingsMenu = null;
+
     [SerializeField] private MainMenu mainMenu = null;
     [SerializeField] private GameOverMenu gameOverMenu = null;
     [SerializeField] private Camera dummyCamera = null;
     [SerializeField] private PauseMenu pauseMenu = null;
+
     public void Start()
     {
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
@@ -42,6 +45,20 @@ public class UIManager : Singleton<UIManager>
         {
             dummyCamera.gameObject.SetActive(true);  
             mainMenu.FadeIn();
+        }
+    }
+
+    public void ToggleSettingsMenu(bool toggleOn)
+    {
+        if(toggleOn)
+        {
+            pauseMenu.gameObject.SetActive(false);
+            settingsMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            pauseMenu.gameObject.SetActive(true);
+            settingsMenu.gameObject.SetActive(false);
         }
     }
 

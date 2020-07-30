@@ -40,6 +40,7 @@ public class PlayerInputHandler : Singleton<PlayerInputHandler>
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            lookSensitivity = UIManager.Instance.settingsMenu.sensitivitySlider.value;
         }
     }
 
