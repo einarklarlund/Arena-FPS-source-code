@@ -135,8 +135,7 @@ public class TowerBehavior : EnemyBehavior
             _hurtbox.layer = LayerMask.NameToLayer("DontHit");
 
             //spawn pickup
-            // PickupManager.Instance.SpawnBasicPickup(_eyeballTransform.position);
-            Instantiate(_pickup, _eyeballTransform.position, Quaternion.identity);
+            PickupManager.Instance.ChooseDeathPickup(_eyeballTransform.position);
 
             if(_deathClip)
                 AudioUtility.CreateSFX(_deathClip, transform.position, AudioUtility.AudioGroups.EnemySpawn, 0.6f, 5f, 500f, 1f);

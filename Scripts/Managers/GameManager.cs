@@ -230,7 +230,6 @@ public class GameManager : Singleton<GameManager>
         _loadOperations.Add(loadOperation);
         _loadedLevelNames.Add(levelName);
         _loading = true;
-
     }
 
     // public method to unload a level asynchronously using Unity's SceneManager

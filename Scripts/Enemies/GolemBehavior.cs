@@ -172,8 +172,7 @@ public class GolemBehavior : EnemyBehavior
             _laserHum.gameObject.SetActive(false);
 
             //spawn pickup
-            // PickupManager.Instance.SpawnBasicPickup(_eyeTransform.position);
-            Instantiate(_pickup, _eyeTransform.position, Quaternion.identity);
+            PickupManager.Instance.ChooseDeathPickup(_eyeTransform.position);
 
             
             if(_deathClip)

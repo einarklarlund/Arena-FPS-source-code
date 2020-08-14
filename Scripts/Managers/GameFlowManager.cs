@@ -24,7 +24,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
     // private Director _golemDirector = null;
     private Director _smallEnemyDirector = null;
     private Director _bigEnemyDirector = null;
-    private Director _chestDirector = null;
+    // private Director _chestDirector = null;
     private float _creditMultiplier;
     
     //round duration variables (in seconds)
@@ -85,7 +85,14 @@ public class GameFlowManager : Singleton<GameFlowManager>
         currentRound++;
 
         //calculate difficulty
-        difficulty += currentRound % 2 == 1 ? 1 : 0;
+        if(currentRound < 8)
+        {
+            difficulty += currentRound % 2 == 1 ? 1 : 0;
+        }
+        else
+        {
+            difficulty += 1;
+        }
 
         Debug.Log("New Round " + currentRound + " difficulty " + difficulty);
 
@@ -133,8 +140,16 @@ public class GameFlowManager : Singleton<GameFlowManager>
                 _smallEnemyDirector.credits += 6;
                 _bigEnemyDirector.credits += 12;
                 break;
+            case 10: //18 credits
+                _smallEnemyDirector.credits += 10;
+                _bigEnemyDirector.credits += 8;
+                break;
+            case 11: //18 credits
+                _smallEnemyDirector.credits += 6;
+                _bigEnemyDirector.credits += 12;
+                break;
             default:
-                float credits = difficulty * 4f;
+                float credits = difficulty * 1.5f;
                 float ratio = UnityEngine.Random.value;
                 _smallEnemyDirector.credits += ratio * credits;
                 _bigEnemyDirector.credits += (1 - ratio) * credits;
@@ -213,12 +228,12 @@ public class GameFlowManager : Singleton<GameFlowManager>
                 Debug.LogWarning("[GameFlowManager] Could not find Big Enemy director");          
             _bigEnemyDirector.canGenerateCredits = true;
         }
-        if(!_chestDirector)
-        {
-            _chestDirector = GameObject.Find("Chest Director").GetComponent<Director>();
-            if(!_chestDirector)
-                Debug.LogWarning("[GameFlowManager] Could not find chest director");
-        }
+        // if(!_chestDirector)
+        // {
+        //     _chestDirector = GameObject.Find("Chest Director").GetComponent<Director>();
+        //     if(!_chestDirector)
+        //         Debug.LogWarning("[GameFlowManager] Could not find chest director");
+        // }
     }
 
     public void GameOver()

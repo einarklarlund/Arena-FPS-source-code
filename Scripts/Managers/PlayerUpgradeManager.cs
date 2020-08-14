@@ -61,8 +61,8 @@ public class PlayerUpgradeManager : MonoBehaviour
             case 0:
                 //upgrade attack speed
                 _hud.DisplayMessage("Attack speed bonus");
-                _weaponController.delayBetweenShots *= 0.6f;
-                _weaponController.bulletSpreadAngle *= 1.4f;
+                _weaponController.delayBetweenShots *= 0.4f;
+                _weaponController.bulletSpreadAngle *= 1.55f;
                 break;
             case 1:
                 //upgrade alt fire
@@ -80,7 +80,15 @@ public class PlayerUpgradeManager : MonoBehaviour
             case 2:
                 //upgrade chance to spawn missile when after an enemy
                 _hud.DisplayMessage("Missile bonus: chance to shoot a missile after hitting an enemy");
-                _weaponController.chanceToSpawnMissile += 0.15f;
+
+                if(_weaponController.chanceToSpawnMissile == 0f)
+                {                
+                    _weaponController.chanceToSpawnMissile = 0.15f;
+                }
+                else
+                {
+                    _weaponController.chanceToSpawnMissile *= 1.15f;
+                }
                 break;
         }
     }
@@ -93,7 +101,7 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             case 0: //upgrade movement speed
                 _hud.DisplayMessage("Movement speed bonus");
-                _playerCharacterController.maxSpeedOnGround *= 1.15f;
+                _playerCharacterController.maxSpeedOnGround *= 1.1f;
                 break;
             case 1: //upgrade bunny hop speed modifier
                 _hud.DisplayMessage("Bunny hop bonus: jump repeatedly to gain a speed boost");
@@ -101,11 +109,11 @@ public class PlayerUpgradeManager : MonoBehaviour
                 break;
             case 2: //upgrade non shooting speed
                 _hud.DisplayMessage("Walking bonus: gain a speed boost when you are not shooting");
-                nonShootingSpeedModifier *= 1.17f;
+                nonShootingSpeedModifier *= 1.15f;
                 break;
             case 3: //upgrade air acceleration
-                _hud.DisplayMessage("Air acceleration bonus: more control while jumping");
-                _playerCharacterController.accelerationSpeedInAir += 15f;
+                _hud.DisplayMessage("Air acceleration bonus: more control in the air while jumping");
+                _playerCharacterController.accelerationSpeedInAir += 20f;
                 break;
 
         }

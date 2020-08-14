@@ -203,10 +203,15 @@ public class PlayerWeaponsManager : MonoBehaviour
     // Update various animated features in LateUpdate because it needs to override the animated arm position
     private void LateUpdate()
     {
-        // UpdateWeaponAiming();
+        UpdateWeaponAiming();
         UpdateWeaponBob();
         UpdateWeaponRecoil();
         UpdateWeaponSwitching();
+
+        // if(GameFlowManager.Instance.timeSpentInRound < weaponSwitchDelay + 1f)
+        // {
+        //     Debug.Log(m_WeaponMainLocalPosition + " " + defaultWeaponPosition.position);
+        // }
 
         // Set final weapon socket position based on all the combined animation influences
         weaponParentSocket.localPosition = m_WeaponMainLocalPosition + m_WeaponBobLocalPosition + m_WeaponRecoilLocalPosition;

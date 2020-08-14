@@ -231,17 +231,23 @@ public class ProjectileStandard : MonoBehaviour
         // RaycastHit[] hits = Physics.SphereCastAll(transform.position, 100f, Vector3.zero, 0f, 1 << LayerMask.NameToLayer("Enemies"), k_TriggerInteraction);
         Collider[] hits = Physics.OverlapSphere(transform.position, 100f, 1 << LayerMask.NameToLayer("Enemies"), k_TriggerInteraction);
         System.Random rng = new System.Random();
+        m_TargetTransform = null;
 
         if(hits.Length != 0)
         {
-            //choose a random target in hits
             int rand;
             int tries = 0;
-            do
+            while (tries++ < 10)
             {
+                //choose a random target in hits
                 rand = rng.Next(0, hits.Length);
-                m_TargetTransform = hits[rand].transform;
-            } while (hits[rand].tag != "Hurtbox" && tries++ < 10);
+                //set target transform if the target is a hurtbox
+                if(hits[rand].tag == "Hurtbox")
+                {
+                    m_TargetTransform = hits[rand].transform;
+                    break;
+                }
+            }
         }
     }
 

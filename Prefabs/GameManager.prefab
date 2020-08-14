@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 546803729}
   - component: {fileID: 5709072027863196367}
   - component: {fileID: 6097359569610019370}
+  - component: {fileID: 7987405783432393266}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -104,3 +105,19 @@ MonoBehaviour:
   _timeBetweenRounds: 4
   _timeBetweenStages: 12
   _roundsPerStage: 3
+--- !u!114 &7987405783432393266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302109690076778289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dbad4cbf3eb8c4d964384b55f17a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickupPrefabs:
+  - {fileID: 6765554850228129815, guid: 5584d2e70c3ce5946b891f6211619fed, type: 3}
+  - {fileID: 6765554850228129815, guid: 6716b4ea4967b53408279f692d39cfd7, type: 3}
+  - {fileID: 6765554850228129815, guid: 731470831700c9a43a6889d8b4c0468c, type: 3}
